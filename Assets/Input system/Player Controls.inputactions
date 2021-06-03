@@ -1,0 +1,39 @@
+{
+    "name": "Player Controls",
+    "maps": [
+        {
+            "name": "Movement",
+            "id": "0b9e4088-c883-4ccd-894b-0c97b28043c4",
+            "actions": [
+                {
+                    "name": "GoTo",
+                    "type": "Button",
+                    "id": "e78c2773-5e4c-47fd-89ed-fffbddd5809a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3b3c07e3-dab5-4023-bd19-aefda74cff37",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PointAndClick",
+                    "action": "GoTo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "PointAndClick",
+            "bindingGroup": "PointAndClick",
+            "devices": []
+        }
+    ]
+}
