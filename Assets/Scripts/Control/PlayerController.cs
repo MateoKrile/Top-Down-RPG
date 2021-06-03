@@ -35,10 +35,8 @@ namespace RPG.Control
                     Vector3 destiantion = hit.point;
                     GetComponent<Mover>().StartMoveAction(destiantion);
                 }
-                Debug.Log("I'm moving");
                 return true;
             }
-            Debug.Log("I'm not moving");
             return false;
         } 
         public bool InteractWithCombat()
@@ -53,10 +51,8 @@ namespace RPG.Control
                 {
                     myFighter.Attack(enemy);
                 }
-                Debug.Log("I'm attacking");
                 return true;
             }
-            Debug.Log("I'm not attacking");
             return false;
         }   
     }

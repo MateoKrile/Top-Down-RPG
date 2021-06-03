@@ -3422,6 +3422,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d5ed51efd55d50448b90542c2b7239a5, type: 2}
+    - target: {fileID: 9214969533026071968, guid: 13400a23ea441a9448a67f236cbf075b, type: 3}
+      propertyPath: weaponRange
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13400a23ea441a9448a67f236cbf075b, type: 3}
 --- !u!1001 &7661644900160523231

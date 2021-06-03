@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Movement;
+using RPG.Core;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, IAction
     {
         [SerializeField] float weaponRange = 1f;
         CombatTarget currentTarget;
@@ -19,13 +20,17 @@ namespace RPG.Combat
             }
             else
             {
-                GetComponent<Mover>().Stop();
+                GetComponent<Mover>().Cancel();
+                AttackAnimation();
             }
+        }
+        private void AttackAnimation()
+        {
+            GetComponent<Animator>().SetTrigger("attack");
         }
         public void Attack(CombatTarget target)
         {
             currentTarget = target;
-            Debug.Log("Die you f*&$ing peasnt");
             target.GetHit();
         }
         public void Cancel()
