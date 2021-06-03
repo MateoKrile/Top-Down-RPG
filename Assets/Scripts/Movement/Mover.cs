@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using RPG.Combat;
 
 namespace RPG.Movement
 {
@@ -18,9 +19,19 @@ namespace RPG.Movement
         {
             UpdateAnimation();
         }
+        public void StartMoveAction(Vector3 destination)
+        {
+            GetComponent<Fighter>().Cancel();
+            MoveTo(destination);
+        }
         public void MoveTo(Vector3 destination)
         {
+            myNavMesh.isStopped = false;
             myNavMesh.destination = destination;
+        }
+        public void Stop()
+        {
+            myNavMesh.isStopped = true;
         }
         private void UpdateAnimation()
         {

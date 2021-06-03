@@ -6,7 +6,7 @@ namespace RPG.Combat
 {
     public class CombatTarget : MonoBehaviour
     {
-        void GetHit()
+        public void GetHit()
         {
             Debug.Log("I'm hurt");
         }

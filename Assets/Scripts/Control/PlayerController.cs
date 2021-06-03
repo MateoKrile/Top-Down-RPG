@@ -16,32 +16,48 @@ namespace RPG.Control
             myFighter = GetComponent<Fighter>();
             controls = new PlayerControls();
             controls.Movement.Enable();
-            controls.Movement.GoTo.performed += context => MoveToCursor();
-            controls.Movement.GoTo.performed += context => InteractWithCombat();
+            controls.Movement.GoTo.performed += context => Interact();
         }
-        private void MoveToCursor()
+        private void Interact()
+        {
+            if(InteractWithCombat()) { return; }
+            if(InteractWithMovement()) { return; }
+        }
+        private bool InteractWithMovement()
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
             bool hasHit = Physics.Raycast(ray.origin, ray.direction, out hit, 100);
             if(hasHit)
             {
-                Vector3 direction = hit.point;
-                GetComponent<Mover>().MoveTo(direction);
+                if(Mouse.current.IsPressed())
+                {
+                    Vector3 destiantion = hit.point;
+                    GetComponent<Mover>().StartMoveAction(destiantion);
+                }
+                Debug.Log("I'm moving");
+                return true;
             }
+            Debug.Log("I'm not moving");
+            return false;
         } 
-        public void InteractWithCombat()
+        public bool InteractWithCombat()
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit[] hits = Physics.RaycastAll(ray, 100);
             foreach( RaycastHit hit in hits)
             {
                 var enemy = hit.transform.GetComponent<CombatTarget>();
-                if(enemy!=null & myFighter!=null)
+                if(!enemy) { continue; }
+                if(Mouse.current.IsPressed())
                 {
-                    myFighter.Attack();
+                    myFighter.Attack(enemy);
                 }
+                Debug.Log("I'm attacking");
+                return true;
             }
+            Debug.Log("I'm not attacking");
+            return false;
         }   
     }
 }
