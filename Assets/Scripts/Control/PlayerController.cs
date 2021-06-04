@@ -16,7 +16,7 @@ namespace RPG.Control
             myFighter = GetComponent<Fighter>();
             controls = new PlayerControls();
             controls.Movement.Enable();
-            controls.Movement.GoTo.performed += context => Interact();
+            controls.Movement.GoTo.started += context => Interact();
         }
         private void Interact()
         {
@@ -27,14 +27,11 @@ namespace RPG.Control
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
-            bool hasHit = Physics.Raycast(ray.origin, ray.direction, out hit, 100);
+            bool hasHit = Physics.Raycast(ray.origin, ray.direction, out hit, 10000);
             if(hasHit)
             {
-                if(Mouse.current.IsPressed())
-                {
-                    Vector3 destiantion = hit.point;
-                    GetComponent<Mover>().StartMoveAction(destiantion);
-                }
+                Vector3 destiantion = hit.point;
+                GetComponent<Mover>().StartMoveAction(destiantion);
                 return true;
             }
             return false;
@@ -42,15 +39,12 @@ namespace RPG.Control
         public bool InteractWithCombat()
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-            RaycastHit[] hits = Physics.RaycastAll(ray, 100);
+            RaycastHit[] hits = Physics.RaycastAll(ray, 10000);
             foreach( RaycastHit hit in hits)
             {
                 var enemy = hit.transform.GetComponent<CombatTarget>();
-                if(!enemy) { continue; }
-                if(Mouse.current.IsPressed())
-                {
-                    myFighter.Attack(enemy);
-                }
+                if(!myFighter.CanAttack(enemy)) { continue; }
+                myFighter.Attack(enemy);
                 return true;
             }
             return false;

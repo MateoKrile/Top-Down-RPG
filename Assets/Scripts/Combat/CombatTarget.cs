@@ -6,9 +6,6 @@ namespace RPG.Combat
 {
     public class CombatTarget : MonoBehaviour
     {
-        public void GetHit()
-        {
-            return;
-        }
+    
     }
 }

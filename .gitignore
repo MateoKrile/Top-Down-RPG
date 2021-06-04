@@ -76,3 +76,5 @@ Assets/Animations/Unarmed.meta
 Assets/Animations/Unarmed/
 Assets/ExplosiveLLC.meta
 Assets/ExplosiveLLC/
+*.FBX
+*.FBX.meta
