@@ -14,18 +14,6 @@ CapsuleCollider:
   m_Height: 1.9576972
   m_Direction: 1
   m_Center: {x: 0.014549255, y: 0.9632653, z: 0}
---- !u!114 &4258158665816980776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5059479610599883453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c208fbb5258d82438aa9948d1d6a18f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3071834532531914761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,6 +27,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDist: 5
+  suspisionTime: 5
+--- !u!114 &4258158665816980776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059479610599883453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c208fbb5258d82438aa9948d1d6a18f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2809217609771673381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93,6 +94,10 @@ PrefabInstance:
     - target: {fileID: 6974590856998495640, guid: 13400a23ea441a9448a67f236cbf075b, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974590856998495643, guid: 13400a23ea441a9448a67f236cbf075b, type: 3}
+      propertyPath: m_Speed
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13400a23ea441a9448a67f236cbf075b, type: 3}

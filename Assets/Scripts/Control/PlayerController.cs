@@ -18,6 +18,13 @@ namespace RPG.Control
             controls.Movement.Enable();
             controls.Movement.GoTo.started += context => Interact();
         }
+        void Update()
+        {
+            if(GetComponent<Health>().IsDead())
+            {
+                controls.Movement.Disable();
+            }
+        }
         private void Interact()
         {
             if(InteractWithCombat()) { return; }
@@ -43,8 +50,9 @@ namespace RPG.Control
             foreach( RaycastHit hit in hits)
             {
                 var enemy = hit.transform.GetComponent<CombatTarget>();
-                if(!myFighter.CanAttack(enemy)) { continue; }
-                myFighter.Attack(enemy);
+                if(enemy == null) { continue; }
+                if(!myFighter.CanAttack(enemy.gameObject)) { continue; }
+                myFighter.Attack(enemy.gameObject);
                 return true;
             }
             return false;

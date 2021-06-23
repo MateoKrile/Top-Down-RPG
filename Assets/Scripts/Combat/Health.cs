@@ -19,7 +19,6 @@ namespace RPG.Combat
             if(isDead) { return; }
             GetComponent<Animator>().SetTrigger("death");
             isDead = true;
-            //Destroy(gameObject);
         }
 
         public bool IsDead()

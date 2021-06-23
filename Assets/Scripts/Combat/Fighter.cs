@@ -39,7 +39,7 @@ namespace RPG.Combat
                 timeSinceLastAttack = 0;
             }
         }
-        public void Attack(CombatTarget target)
+        public void Attack(GameObject target)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             currentTarget = target.GetComponent<Health>();
@@ -57,7 +57,7 @@ namespace RPG.Combat
             if(currentTarget == null) { return; }
             currentTarget.TakeDamage(damage);
         }
-        public bool CanAttack(CombatTarget target)
+        public bool CanAttack(GameObject target)
         {
             if(target == null) { return false; }  
             Health targetHealth = target.GetComponent<Health>();
